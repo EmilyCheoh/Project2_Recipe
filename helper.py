@@ -37,6 +37,8 @@ def tokenize_ingredient(text):
                 measure_word = True
             elif tag[0]== '(':
                 m = re.search(r"\(([0-9]* [A-Za-z0-9_]+)\)", text)
+                if m==None:
+                    continue
                 quantity += '(' +m.group(1)+') '
                 ignore = True
             elif tag[0] == ')':

@@ -37,6 +37,8 @@ def tokenize_ingredient(text):
                 measure_word = True
             elif tag[0]== '(':
                 m = re.search(r"\(([0-9]* [A-Za-z0-9_]+)\)", text)
+                if m==None:
+                    continue
                 quantity += '(' +m.group(1)+') '
                 ignore = True
             elif tag[0] == ')':
@@ -59,7 +61,7 @@ def tokenize_ingredient(text):
             elif not ignore:
                 ingredient_name+=tag[0]+' '
 #         print(tagged) 
-    ingredient['ingredient_name']=ingredient_name
+    ingredient['ingredient_name']=ingredient_name.lower()
     ingredient['quantity'] = quantity
     ingredient['measurement'] = measurement
     ingredient['preparation'] = preparation
@@ -90,7 +92,7 @@ def get_cooking_method(word):
             return True
     return False
 result = get_cooking_method("chopped")
-print(result)
+# print(result)
 
 def get_cooking_tools(word):
     tools1 = ['[Pp]ot','[Kk]nife','[Pp]an.?','[Kk]nives','[Gg]rater','[Bb]oard','[Oo]pener','[Cc]up.?','[Ss]poon.?','[Bb]owl.?','[Cc]olander.?','[Pp]eeler.?','[Mm]asher.?','[Ww]hisk.?','[Ss]pinner.?','[Gg]rater.?','[Ss]hear.?','[Jj]uicer','[Pp]ress','[Ss]teel','[Ss]harpener.?']
@@ -132,7 +134,10 @@ def analyze_sentence(text, ingredients):
                 ingredient.append(get_ingredient(word, ingredients))
             
             if word=='minute' or word == 'minutes':
-                time.append(pre_word+' '+'minute')
+                time.append(pre_word+' '+word)
+                
+            if word == 'hours' or word=='hour':
+                time.append(pre_word+' '+word)
             pre_word = word
                                   
     steps['ingredient'] = ingredient

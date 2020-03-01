@@ -61,7 +61,7 @@ def tokenize_ingredient(text):
             elif not ignore:
                 ingredient_name+=tag[0]+' '
 #         print(tagged) 
-    ingredient['ingredient_name']=ingredient_name
+    ingredient['ingredient_name']=ingredient_name.lower()
     ingredient['quantity'] = quantity
     ingredient['measurement'] = measurement
     ingredient['preparation'] = preparation

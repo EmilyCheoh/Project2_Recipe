@@ -3,12 +3,13 @@ import helper
 import display_recipes
 import display_veges
 import french
+import italian
 quit = False
 while not quit:
     search_term = input("Please enter an ingredient name:\n")
     ingredients, tools, methods, steps = display_recipes.display(search_term)
     while True:
-        transform = 'Transformation List:\n 1. To Vegetarian/to Non-Vegetarian \n 2. To healthy/ To unhealthy\n 3. to French Style of cuisine\n 4. Double the amount or cut it by half\n\nPlease select your transformation:  '
+        transform = 'Transformation List:\n 1. To Vegetarian/to Non-Vegetarian \n 2. To healthy/ To unhealthy\n 3. to French/Italian Style of cuisine\n 4. Double the amount or cut it by half\n\nPlease select your transformation:  '
         select = input(transform)
         while not select.isdigit() or int(select)<1 or int(select)>4:
             print("invalid input, please enger digit\n\n")
@@ -30,8 +31,18 @@ while not quit:
                 display_veges.display_unhealthy(ingredients, tools, methods, steps)
             # print('to healthy')
         elif select == 3:
-            print("to french")
-            french.main(ingredients, tools, methods, steps)
+            cuisine_str = "\n Press 1 to transform to French \n Press 2 to transform to Italian\n\nPlease select your transformation:  "
+            select = input(cuisine_str)
+            while not select.isdigit() or int(select)<1 or int(select)>2:
+                print("invalid input, please enger digit\n\n")
+                select = input(transform)
+            select = int(select)
+            if select==1:
+                print("to French")
+                french.main(ingredients, tools, methods, steps)
+            else:
+                print("to Italian")
+                italian.main(ingredients, tools, methods, steps)
         else:
             print("Double")
 

@@ -92,7 +92,7 @@ def get_cooking_method(word):
             return True
     return False
 result = get_cooking_method("chopped")
-print(result)
+# print(result)
 
 def get_cooking_tools(word):
     tools1 = ['[Pp]ot','[Kk]nife','[Pp]an.?','[Kk]nives','[Gg]rater','[Bb]oard','[Oo]pener','[Cc]up.?','[Ss]poon.?','[Bb]owl.?','[Cc]olander.?','[Pp]eeler.?','[Mm]asher.?','[Ww]hisk.?','[Ss]pinner.?','[Gg]rater.?','[Ss]hear.?','[Jj]uicer','[Pp]ress','[Ss]teel','[Ss]harpener.?']
@@ -134,7 +134,10 @@ def analyze_sentence(text, ingredients):
                 ingredient.append(get_ingredient(word, ingredients))
             
             if word=='minute' or word == 'minutes':
-                time.append(pre_word+' '+'minute')
+                time.append(pre_word+' '+word)
+                
+            if word == 'hours' or word=='hour':
+                time.append(pre_word+' '+word)
             pre_word = word
                                   
     steps['ingredient'] = ingredient

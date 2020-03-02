@@ -50,7 +50,7 @@ class RecipeFetcher:
             for span in nutrient_row.find_all('span', recursive=False):
                 text = span.text.strip()
                 ans = r.findall(text)
-                print(text)
+                # print(text)
                 if ans:
                     names = ''
                     for a in ans:
@@ -81,11 +81,11 @@ class RecipeFetcher:
         return results
 
 
-rf = RecipeFetcher()
-meat_lasagna = rf.search_recipes('meat lasagna')[0]
-# print(meat_lasagna)
-result = rf.scrape_recipe(meat_lasagna)
-print(result)
+# rf = RecipeFetcher()
+# meat_lasagna = rf.search_recipes('meat lasagna')[0]
+# # print(meat_lasagna)
+# result = rf.scrape_recipe(meat_lasagna)
+# print(result)
 """
 Should return:
 

@@ -24,7 +24,20 @@ while not quit:
             
         select = int(select)
         if select==1:
-            print("to vege")
+            vege_str = "\n Press 1 to transform to Vegetarian \n Press 2 to transform to Non-Vegetarian\n\nPlease select your transformation:  "
+            select = input(vege_str)
+            while not select.isdigit() or int(select)<1 or int(select)>2:
+                print("invalid input, please enter digit\n\n")
+                select = input(vege_str)
+            select = int(select)
+            if select==1:
+                # insert your code
+                print("to vege")
+            else:
+                # insert your code
+                print("to non-vege")
+            
+            
         elif select==2:
             healthy_str = "\n Press 1 to transform to healthy \n Press 2 to transform to unhealthy\n\nPlease select your transformation:  "
             select = input(healthy_str)

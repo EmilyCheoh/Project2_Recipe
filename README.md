@@ -1,8 +1,10 @@
 # Project 2: Recipe Transformer
 
 ## Usage: 
-1. Running the command before running the program: python -m spacy download en_core_web_md
-2. Running the program: python main.py
+1. Running the command: 
+      python -m spacy download en_core_web_md
+2. Running the program: 
+      python main.py
 
 ## To/From Vegetarian: 
 

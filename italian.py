@@ -18,12 +18,10 @@ def italianify_ingredients(ingredient_names):
           'seafood': ['cod', 'baccala', 'anchovies', 'sea bass', 'calamari', 'shrimp', 'tilapia', 'swordfish', 'eel', 'clam', 'mussels', 'octopus', 'tuna', 'sardines'], 
           'fungus': [ 'truffle', 'portobello mushrooms']}
     categories = ['vegetable', 'fruit', 'meat', 'spice', 'seasoning', 'herb', 'pasta', 'eggs', 'cheese', 'seafood', 'fungus']
-    # categories = ['vegetable', 'spice', 'seasoning', 'herb']
     # receive list of ingredients
-    input_ingredients = ingredient_names  # ['pear', 'garlic', 'salt', 'potato', 'duck', 'tilapia', 'truffle']
+    input_ingredients = ingredient_names 
     # for each ingredient, categorize it in one of the 7 categories (add other?)
-    # input_ingredients = ['fleur de sel', 'herbes de Provence', 'tarragon', 'rosemary', 'marjoram', 'lavender', 'thyme', 'fennel', 'sage', 'carrot', 'eggplant', 'potato']
-
+    
     nlp = spacy.load("en_core_web_md")  
     categorized_ingredients = []
     for ingredient in input_ingredients:
@@ -70,7 +68,6 @@ def italianify_ingredients(ingredient_names):
                 old_new_ingredients.append((ingredient, ingredient)) 
             else:
                 old_new_ingredients.append((ingredient, best_alternate)) 
-    #print(old_new_ingredients)
     return old_new_ingredients
 
 
@@ -143,6 +140,7 @@ def merge_ingredient(ingredient):
     return ingredient['quantity']+ ingredient['measurement']+ ingredient['ingredient_name']+ingredient['preparation']
 
 def main(ingredients, tools, methods, steps):
+    print('to Italian: ')
     print('loading...')
     ingredient_names = []
     for ingredient in ingredients:
@@ -151,12 +149,9 @@ def main(ingredients, tools, methods, steps):
     
     italian_ingredients = italianify_ingredients(ingredient_names)
     print("\n\n\nItalianified Recipe Breakdown\n")
-    #print('ingredient_names: ', ingredient_names)
     print('-------ingredients-----')
-    # print(ingredients)
     for ingredient_tuple in italian_ingredients:
         for ingredient in ingredients:
-    #         print('ingredients', type(ingredients))
             if ingredient['ingredient_name'] == ingredient_tuple[0]:
                 ingredient['ingredient_name']  = ingredient_tuple[1]
 

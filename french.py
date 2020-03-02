@@ -17,11 +17,9 @@ def Frenchify_ingredients(ingredient_names):
           'seafood': ['cod', 'sardines', 'tuna', 'salmon', 'trout', 'mussels', 'herring', 'oysters', 'shrimp', 'calamari'], 
           'fungus': [ 'truffle', 'button mushroom', 'chanterelle', 'oyster mushrooms', 'porcini']}
     categories = ['vegetable', 'fruit', 'meat', 'spice', 'seasoning', 'herb', 'pasta', 'eggs', 'cheese', 'seafood', 'fungus']
-    # categories = ['vegetable', 'spice', 'seasoning', 'herb']
     # receive list of ingredients
-    input_ingredients = ingredient_names  # ['pear', 'garlic', 'salt', 'potato', 'duck', 'tilapia', 'truffle']
+    input_ingredients = ingredient_names  
     # for each ingredient, categorize it in one of the 7 categories (add other?)
-    # input_ingredients = ['fleur de sel', 'herbes de Provence', 'tarragon', 'rosemary', 'marjoram', 'lavender', 'thyme', 'fennel', 'sage', 'carrot', 'eggplant', 'potato']
 
     nlp = spacy.load("en_core_web_md")  
     categorized_ingredients = []
@@ -69,7 +67,6 @@ def Frenchify_ingredients(ingredient_names):
                 old_new_ingredients.append((ingredient, ingredient)) 
             else:
                 old_new_ingredients.append((ingredient, best_alternate)) 
-    #print(old_new_ingredients)
     return old_new_ingredients
 
 
@@ -150,13 +147,10 @@ def main(ingredients, tools, methods, steps):
     
     french_ingredients = Frenchify_ingredients(ingredient_names)
     print("\n\n\nFrenchified Recipe Breakdown\n")
-    #print('ingredient_names: ', ingredient_names)
     print('-------ingredients-----')
 
-    # print(ingredients)
     for ingredient_tuple in french_ingredients:
         for ingredient in ingredients:
-    #         print('ingredients', type(ingredients))
             if ingredient['ingredient_name'] == ingredient_tuple[0]:
                 ingredient['ingredient_name']  = ingredient_tuple[1]
 

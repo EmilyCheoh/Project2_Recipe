@@ -22,7 +22,7 @@ class RecipeFetcher:
         results = {}
 
         page_html = requests.get(recipe_url)
-        page_graph = BeautifulSoup(page_html.content)
+        page_graph = BeautifulSoup(page_html.content, 'html.parser')
 
         results['ingredients'] = [ingredient.text for ingredient in\
                                   page_graph.find_all('span', {'itemprop':'recipeIngredient'})]
@@ -41,7 +41,7 @@ class RecipeFetcher:
         nutrition_facts_url = '%s/fullrecipenutrition' %(recipe_url)
 
         page_html = requests.get(nutrition_facts_url)
-        page_graph = BeautifulSoup(page_html.content)
+        page_graph = BeautifulSoup(page_html.content, 'html.parser')
 
         r = re.compile("([0-9]*\.?[0-9]*)([a-zA-Z]+)")
 

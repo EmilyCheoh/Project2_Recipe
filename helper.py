@@ -2,6 +2,7 @@ import nltk
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize, sent_tokenize 
 import re
+import fractions
 
 def is_measure_word(word):
     quantifier1 = ['bowl','dish','pound','piece','can','box','bag','carton','jar','loaf','slice','package','dash','cube','pack','head','ear','kernel','gain','grain','stalk','spear','clove']
@@ -278,3 +279,54 @@ def get_steps(directions, ingredients):
     methods,tools = get_tools_and_methods(directions)
     return tools, methods, steps
     
+def double_ingredient_size(ingredients):
+    for ingredient in ingredients:
+        quantity = ingredient['quantity']
+        fraction_str = ''
+        keep_str = ''
+        interrupt=False
+        for c in quantity:
+            if (c=='(' or c=='[') and not interrupt:
+                interrupt = True
+                
+            if not interrupt:
+                fraction_str += c
+            else:
+                keep_str += c
+#         print(quantity)
+#         print(fraction_str)
+        fraction_obj = sum(map(fractions.Fraction, fraction_str.split()))
+#         print(float(fraction_obj))
+        fraction_obj *= 2
+#         print(keep_str)
+        ingredient['quantity'] = str(fraction_obj ) + " "+ keep_str
+    
+#         print("new quantity: ",ingredient['quantity'])
+#         print()
+    return ingredients    
+
+def cut_ingredient_size(ingredients):
+    for ingredient in ingredients:
+        quantity = ingredient['quantity']
+        fraction_str = ''
+        keep_str = ''
+        interrupt=False
+        for c in quantity:
+            if (c=='(' or c=='[') and not interrupt:
+                interrupt = True
+                
+            if not interrupt:
+                fraction_str += c
+            else:
+                keep_str += c
+#         print(quantity)
+#         print(fraction_str)
+        fraction_obj = sum(map(fractions.Fraction, fraction_str.split()))
+#         print(float(fraction_obj))
+        fraction_obj /= 2
+#         print(keep_str)
+        ingredient['quantity'] = str(fraction_obj ) + " "+ keep_str
+    
+#         print("new quantity: ",ingredient['quantity'])
+#         print()
+    return ingredients    

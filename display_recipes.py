@@ -1,5 +1,8 @@
 import script
 import helper
+
+def merge_ingredient(ingredient):
+    return ingredient['quantity']+ ingredient['measurement']+ ingredient['ingredient_name']+ingredient['preparation']
 def display(search_url):
     rf = script.RecipeFetcher()
     # meat_lasagna = rf.search_recipes(search_term)[0]
@@ -17,8 +20,11 @@ def display(search_url):
     tools, methods, steps = helper.get_steps(directions, ingredient_names)
 
     print('-------ingredients-----')
+    
     for ingredient in ingredients:
+        print(merge_ingredient(ingredient))
         print(ingredient)
+        print()
     print('\n-------tools-----')
     print(tools)
 

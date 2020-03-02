@@ -9,8 +9,8 @@ import italian
 import copy
 quit = False
 while not quit:
-    search_term = input("Please enter an ingredient name:\n")
-    ingredients_orig, tools_orig, methods_orig, steps_orig = display_recipes.display(search_term)
+    search_url = input("Please enter an ingredient URL:\n")
+    ingredients_orig, tools_orig, methods_orig, steps_orig = display_recipes.display(search_url)
     while True:
         ingredients = copy.deepcopy(ingredients_orig)
         tools = copy.deepcopy(tools_orig)

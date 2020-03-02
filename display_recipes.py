@@ -1,9 +1,9 @@
 import script
 import helper
-def display(search_term):
+def display(search_url):
     rf = script.RecipeFetcher()
-    meat_lasagna = rf.search_recipes(search_term)[0]
-    result = rf.scrape_recipe(meat_lasagna)
+    # meat_lasagna = rf.search_recipes(search_term)[0]
+    result = rf.scrape_recipe(search_url)
     ings = result['ingredients']
     ingredients = []
     for ingredient in ings:

@@ -9,14 +9,14 @@ class RecipeFetcher:
 
     search_base_url = 'https://www.allrecipes.com/search/results/?wt=%s&sort=re'
 
-    def search_recipes(self, keywords): 
-        search_url = self.search_base_url %(keywords.replace(' ','+'))
+    # def search_recipes(self, keywords): 
+    #     search_url = self.search_base_url %(keywords.replace(' ','+'))
+    #     print(search_url)
+    #     page_html = requests.get(search_url)
+    #     page_graph = BeautifulSoup(page_html.content, features = 'lxml')
 
-        page_html = requests.get(search_url)
-        page_graph = BeautifulSoup(page_html.content, features = 'lxml')
-
-        return [recipe.a['href'] for recipe in\
-               page_graph.find_all('div', {'class':'grid-card-image-container'})]
+    #     return [recipe.a['href'] for recipe in\
+    #            page_graph.find_all('div', {'class':'grid-card-image-container'})]
 
     def scrape_recipe(self, recipe_url):
         results = {}
@@ -66,25 +66,14 @@ class RecipeFetcher:
                     if text:
                         nutrient['daily_value'] = text
                     
-                # print(r.findall(text))
-                
-            
-            # print(nutrient)
-            # nutrient_row.
-
-            # Fill out this to scrape and return:
-            # nutrient['name'], nutrient['amount'],
-            # nutrient['unit'], nutrient['daily_value']
-            
-            results.append(nutrient)
 
         return results
 
 
 # rf = RecipeFetcher()
 # meat_lasagna = rf.search_recipes('meat lasagna')[0]
-# # print(meat_lasagna)
-# result = rf.scrape_recipe(meat_lasagna)
+# print(meat_lasagna)
+# result = rf.scrape_recipe('https://www.allrecipes.com/recipe/215048/caramel-macchiato-ice-cream/?internalSource=hub%20recipe&referringContentType=Search')
 # print(result)
 """
 Should return:

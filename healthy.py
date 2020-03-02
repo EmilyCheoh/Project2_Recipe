@@ -43,7 +43,7 @@ def transform_to_healthy(ingredients, tools, methods, steps):
         if re.search('sugar',step[0]):
 #             print(step,"----------being deleted")
             continue
-        print(step,"\n")
+        # print(step,"\n")
         new_steps.append(step)
     return new_ingredients,methods, new_steps 
 

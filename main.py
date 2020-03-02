@@ -2,6 +2,7 @@ import script
 import helper
 import display_recipes
 import display_veges
+import display_double
 import french
 import italian
 quit = False
@@ -44,7 +45,7 @@ while not quit:
                 print("to Italian")
                 italian.main(ingredients, tools, methods, steps)
         else:
-            print("Double")
+            display_double.display(ingredients, tools, methods, steps)
 
         select_str = "\n\nDo you want to continue transforming?\n Press 1 to continue transforming \n Press 2 to restart new recipe\n Press 3 to quit the program\n\nPlease select your transformation: "
         select = input(select_str)

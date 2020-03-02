@@ -138,6 +138,9 @@ def french_analyze_sentence(text, ingredients, ingredients_french):
         
     return text
 
+def merge_ingredient(ingredient):
+    return ingredient['quantity']+ ingredient['measurement']+ ingredient['ingredient_name']+ingredient['preparation']
+
 def main(ingredients, tools, methods, steps):
     print('loading...')
     ingredient_names = []
@@ -146,9 +149,10 @@ def main(ingredients, tools, methods, steps):
 
     
     french_ingredients = Frenchify_ingredients(ingredient_names)
-    print("Frenchified Recipe Breakdown")
+    print("\n\n\nFrenchified Recipe Breakdown\n")
     #print('ingredient_names: ', ingredient_names)
     print('-------ingredients-----')
+
     # print(ingredients)
     for ingredient_tuple in french_ingredients:
         for ingredient in ingredients:
@@ -157,7 +161,9 @@ def main(ingredients, tools, methods, steps):
                 ingredient['ingredient_name']  = ingredient_tuple[1]
 
     for ingredient in ingredients:
+        print(merge_ingredient(ingredient))
         print(ingredient)
+        print('\n')
     print('\n-------tools-----')
     print(tools)
 
@@ -165,7 +171,10 @@ def main(ingredients, tools, methods, steps):
     print(methods)
 
     print('\n-------steps------')
+    cnt = 1
     for step in steps:
+        print("Step ",cnt)
+        cnt += 1
         # step[0]: the sentence
         step[0] = french_analyze_sentence(step[0], ingredient_names, french_ingredients)
         print(step[0])

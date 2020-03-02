@@ -1,10 +1,15 @@
 import script
 import helper
+def merge_ingredient(ingredient):
+    return str(ingredient['quantity'])+ ingredient['measurement']+ ingredient['ingredient_name']+ingredient['preparation']
+
 def display(ingredients, tools, methods, steps):
     ingredients = helper.cut_ingredient_size(ingredients)
     print('-------ingredients-----')
     for ingredient in ingredients:
+        print(merge_ingredient(ingredient))
         print(ingredient)
+        print()
 
     print('\n-------tools-----')
     print(tools)

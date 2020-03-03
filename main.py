@@ -50,8 +50,14 @@ while not quit:
                 select = input(healthy_str)
             select = int(select)
             if select==1:
+                print()
+                print("Transforming to a Healthy recipe... ")
+                print()
                 display_veges.display_healthy(ingredients, tools, methods, steps)
             else:
+                print()
+                print("Transforming to an Unhealthy recipe... ")
+                print()
                 display_veges.display_unhealthy(ingredients, tools, methods, steps)
             # print('to healthy')
         elif select == 3:
@@ -62,10 +68,8 @@ while not quit:
                 select = input(cuisine_str)
             select = int(select)
             if select==1:
-                print("to French")
                 french.main(ingredients, tools, methods, steps)
             else:
-                print("to Italian")
                 italian.main(ingredients, tools, methods, steps)
         else:
             size_str= "\n Press 1 to double ingredients size \n Press 2 to cut it by half\n\nPlease select your transformation:  "
@@ -75,8 +79,14 @@ while not quit:
                 select = input(size_str)
             select = int(select)
             if select==1:
+                print()
+                print('Doubling amount of ingredients...')
+                print()
                 display_double.display(ingredients, tools, methods, steps)
             else:
+                print()
+                print('Cutting amount of ingredients by half...')
+                print()
                 display_half.display(ingredients, tools, methods, steps)
 
         select_str = "\n\nDo you want to continue transforming?\n Press 1 to continue transforming \n Press 2 to restart new recipe\n Press 3 to quit the program\n\nPlease select your transformation: "

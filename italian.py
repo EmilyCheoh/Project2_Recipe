@@ -140,7 +140,8 @@ def merge_ingredient(ingredient):
     return ingredient['quantity']+ ingredient['measurement']+ ingredient['ingredient_name']+ingredient['preparation']
 
 def main(ingredients, tools, methods, steps):
-    print('to Italian: ')
+    print()
+    print('Transforming to Italian... ')
     print('loading...')
     ingredient_names = []
     for ingredient in ingredients:
@@ -156,9 +157,13 @@ def main(ingredients, tools, methods, steps):
                 ingredient['ingredient_name']  = ingredient_tuple[1]
 
     for ingredient in ingredients:
-        print(merge_ingredient(ingredient))
-        print(ingredient)
-        print('\n')
+        print(merge_ingredient(ingredient).rstrip(','))
+        print('..........')
+        print('name:', ingredient['ingredient_name'].rstrip(','))
+        print('quantity:', ingredient['quantity'])
+        print('measurement:', ingredient['measurement'])
+        print('preparation:', ingredient['preparation'])
+        print()
     print('\n-------Tools-------')
     for tool in tools:
         print(tool)

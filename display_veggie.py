@@ -3,10 +3,15 @@ import helper
 import vegetarian
 
 def display_veggie_recipe(url):
-    ingredients, directions, methods, tools = vegetarian.parse_new_veggie_recipe(url)
+    ingredients, raw_ingredients, directions, methods, tools = vegetarian.parse_new_veggie_recipe(url)
     print('-------Ingredients-----')
-    for ingredient in ingredients:
-        print(ingredient)
+    for index, ri in enumerate(raw_ingredients):
+        print(ingredients[index])
+        print('..........')
+        print('ingredient name:', ri['ingredient_name'].rstrip(','))
+        print('quantity:', ri['quantity'])
+        print('measurement:', ri['measurement'])
+        print('preparation:', ri['preparation'])
         print()
     print('\n-------Tools-----')
     for tool in tools:
@@ -50,10 +55,15 @@ def display_veggie_recipe(url):
         cnt+=1
 
 def display_non_veggie_recipe(url):
-    ingredients, directions, methods, tools = vegetarian.parse_new_non_veggie_recipe(url)
+    ingredients, raw_ingredients, directions, methods, tools = vegetarian.parse_new_non_veggie_recipe(url)
     print('-------Ingredients-----')
-    for ingredient in ingredients:
-        print(ingredient)
+    for index, ri in enumerate(raw_ingredients):
+        print(ingredients[index])
+        print('..........')
+        print('ingredient name:', ri['ingredient_name'].rstrip(','))
+        print('quantity:', ri['quantity'])
+        print('measurement:', ri['measurement'])
+        print('preparation:', ri['preparation'])
         print()
     print('\n-------Tools-----')
     for tool in tools:

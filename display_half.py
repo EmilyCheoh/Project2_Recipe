@@ -7,8 +7,12 @@ def display(ingredients, tools, methods, steps):
     ingredients = helper.cut_ingredient_size(ingredients)
     print('-------Ingredients-----')
     for ingredient in ingredients:
-        print(merge_ingredient(ingredient))
-        print(ingredient)
+        print(merge_ingredient(ingredient).rstrip(','))
+        print('..........')
+        print('name:', ingredient['ingredient_name'].rstrip(','))
+        print('quantity:', ingredient['quantity'])
+        print('measurement:', ingredient['measurement'])
+        print('preparation:', ingredient['preparation'])
         print()
 
     print('\n-------Tools-----')

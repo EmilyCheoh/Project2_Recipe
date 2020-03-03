@@ -115,7 +115,7 @@ def parse_new_veggie_recipe(name):
         if re.match(r'.*or to taste', ing['preparation'], re.IGNORECASE):
             text = ''.join((ing['quantity'], ing['measurement'], ing['ingredient_name'].strip(), ', or to taste'))
         else:
-            text = ''.join((ing['quantity'], ing['measurement'], ing['ingredient_name']))
+            text = ''.join((ing['quantity'], ing['measurement'], ing['preparation'], ing['ingredient_name']))
         parsed_ingredients_lst.append(text.strip())
         
     parsed_directions_lst = []
@@ -123,7 +123,7 @@ def parse_new_veggie_recipe(name):
         parsed_directions_lst.append(stp[0])
 
 
-    return parsed_ingredients_lst, veggie_directions, methods, tools
+    return parsed_ingredients_lst, veggie_ingredients, veggie_directions, methods, tools
 
 ################################################
 
@@ -179,4 +179,4 @@ def parse_new_non_veggie_recipe(name):
         parsed_directions_lst.append(stp[0].strip())
 
 
-    return parsed_ingredients_lst, non_veggie_directions, methods, tools
+    return parsed_ingredients_lst, non_veggie_ingredients, non_veggie_directions, methods, tools

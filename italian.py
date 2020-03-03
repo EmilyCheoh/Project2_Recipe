@@ -159,20 +159,23 @@ def main(ingredients, tools, methods, steps):
         print(merge_ingredient(ingredient))
         print(ingredient)
         print('\n')
-    print('\n-------tools-----')
-    print(tools)
+    print('\n-------Tools-------')
+    for tool in tools:
+        print(tool)
 
-    print('\n-------methods-----')
-    print(methods)
+    print('\n-------Methods-------')
+    for method in methods:
+        print(method)
 
-    print('\n-------steps------')
+    print('\n-------Steps-------')
     cnt = 1
     for step in steps:
-        print("Step ",cnt)
+        print("Step",cnt)
         cnt += 1
         # step[0]: the sentence
         step[0] = italian_analyze_sentence(step[0], ingredient_names, italian_ingredients)
-        print(step[0])
+        print(step[0].strip())
+        print('..........')
 
         # step[1]: the ingredients list
         for ingredient_tuple in italian_ingredients:
@@ -182,6 +185,28 @@ def main(ingredients, tools, methods, steps):
                     step[1]['ingredient'].remove(ingredient)
         step[1]['ingredient'] = list(dict.fromkeys(step[1]['ingredient']))  # remove duplicates
 
-        print(step[1])
-        print('\n')
+        if len(step[1]['ingredient']) != 0:
+            print('ingredients: ', end = '')
+            for ing in step[1]['ingredient'][:-1]:
+                print(ing.strip(), end = ', ')
+            print(step[1]['ingredient'][-1])
+        
+        if len(step[1]['cooking tools']) != 0:
+            print('cooking tools: ', end = '')
+            for ing in step[1]['cooking tools'][:-1]:
+                print(ing.strip(), end = ', ')
+            print(step[1]['cooking tools'][-1])
+
+        if len(step[1]['cooking methods']) != 0:
+            print('cooking methods: ', end = '')
+            for ing in step[1]['cooking methods'][:-1]:
+                print(ing.strip(), end = ', ')
+            print(step[1]['cooking methods'][-1])
+
+        if len(step[1]['time']) != 0:
+            print('cooking time: ', end = '')
+            for ing in step[1]['time'][:-1]:
+                print(ing.strip(), end = ', ')
+            print(step[1]['time'][-1])
+        print()
 

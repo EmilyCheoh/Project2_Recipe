@@ -1,14 +1,11 @@
 import script
 import helper
-import healthy
-def merge_ingredient(ingredient):
-    return str(ingredient['quantity'])+ ingredient['measurement']+ ingredient['ingredient_name']+ingredient['preparation']
+import vegetarian
 
-def display_healthy(ingredients, tools, methods, steps):
-    ingredients,methods, steps = healthy.transform_to_healthy(ingredients, tools, methods, steps)
-    print('-------ingredients-----')
+def display_veggie_recipe(url):
+    ingredients, directions, methods, tools = vegetarian.parse_new_veggie_recipe(url)
+    print('-------Ingredients-----')
     for ingredient in ingredients:
-        print(merge_ingredient(ingredient))
         print(ingredient)
         print()
     print('\n-------Tools-----')
@@ -21,7 +18,7 @@ def display_healthy(ingredients, tools, methods, steps):
 
     print('\n-------Steps------')
     cnt = 1
-    for step in steps:
+    for step in directions:
         print("step", cnt)
         print(step[0].strip())
         print('..........')
@@ -52,11 +49,10 @@ def display_healthy(ingredients, tools, methods, steps):
         print()
         cnt+=1
 
-def display_unhealthy(ingredients, tools, methods, steps):
-    ingredients,methods, steps = healthy.transform_to_unhealthy(ingredients, tools, methods, steps)
+def display_non_veggie_recipe(url):
+    ingredients, directions, methods, tools = vegetarian.parse_new_non_veggie_recipe(url)
     print('-------Ingredients-----')
     for ingredient in ingredients:
-        print(merge_ingredient(ingredient))
         print(ingredient)
         print()
     print('\n-------Tools-----')
@@ -69,7 +65,7 @@ def display_unhealthy(ingredients, tools, methods, steps):
 
     print('\n-------Steps------')
     cnt = 1
-    for step in steps:
+    for step in directions:
         print("step", cnt)
         print(step[0].strip())
         print('..........')

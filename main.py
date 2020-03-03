@@ -4,12 +4,13 @@ import display_recipes
 import display_veges
 import display_double
 import display_half
+import display_veggie
 import french
 import italian
 import copy
 quit = False
 while not quit:
-    search_url = input("Please enter an ingredient URL:\n")
+    search_url = input("Please enter a URL from AllRecipes.com:\n")
     ingredients_orig, tools_orig, methods_orig, steps_orig = display_recipes.display(search_url)
     while True:
         ingredients = copy.deepcopy(ingredients_orig)
@@ -31,11 +32,14 @@ while not quit:
                 select = input(vege_str)
             select = int(select)
             if select==1:
-                # insert your code
-                print("to vege")
+                print()
+                print("Transforming from Non-Vegetarian to Vegetarian... ")
+                display_veggie.display_veggie_recipe(search_url)
             else:
                 # insert your code
-                print("to non-vege")
+                print()
+                print("Transforming from Vegetarian to Non-Vegetarian... ")
+                display_veggie.display_non_veggie_recipe(search_url)
             
             
         elif select==2:

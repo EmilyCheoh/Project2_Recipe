@@ -126,10 +126,10 @@ def analyze_sentence(text, ingredients):
         pre_word = ''
         for word in wordsList:
             if get_cooking_method(word):
-                methods.append(word)
+                methods.append(word.lower())
             
             if get_cooking_tools(word):
-                tools.append(word)   
+                tools.append(word.lower())   
                 
             if get_ingredient(word, ingredients)!=False:
                 ingredient.append(get_ingredient(word, ingredients))
@@ -226,7 +226,7 @@ def get_tools_and_methods(directions):
                 for m in methods1:
                     flag = False
                     if re.search(m, word):
-                        methods.append(word)
+                        methods.append(word.lower())
                         methods1.remove(m)
                         flag = True
                         break
@@ -234,14 +234,14 @@ def get_tools_and_methods(directions):
                         continue
                 for m in methods2:
                     if re.search(m, word):
-                        methods.append(word)
+                        methods.append(word.lower())
                         methods2.remove(m)
                         break
                 
                 for t in tools1:
                     flag = False
                     if re.search(t, word):
-                        tools.append(word)
+                        tools.append(word.lower())
                         tools1.remove(t)
                         flag = True
                         break
@@ -249,9 +249,12 @@ def get_tools_and_methods(directions):
                         continue
                 for t in tools2:
                     if re.search(t, word):
-                        tools.append(word)
+                        tools.append(word.lower())
                         tools2.remove(t)
                         break
+
+    methods = list(dict.fromkeys(methods))
+    tools = list(dict.fromkeys(tools))
         
     return methods, tools
              

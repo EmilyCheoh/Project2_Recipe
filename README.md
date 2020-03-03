@@ -7,6 +7,7 @@
       python main.py
 
 ## To/From Vegetarian: 
+Eggs and dairy products are allowed in vegetarian recipes. Meats and seafoods are removed. 
 
 ## To/From Healthy: 
 Our definintion of eating healthy: less sugar, cheese, salt, and oil, more vegetables, less meat, no frying.
